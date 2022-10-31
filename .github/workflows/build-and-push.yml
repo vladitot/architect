@@ -25,4 +25,4 @@ jobs:
           file: ./Dockerfile
           push: true
           target: production
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/architect:$RELEASE_VERSION
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/architect:$GITHUB_REF
