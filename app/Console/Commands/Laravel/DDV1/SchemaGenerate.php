@@ -12,7 +12,7 @@ class SchemaGenerate extends Command
      *
      * @var string
      */
-    protected $signature = 'schema:generate-ddv1';
+    protected $signature = 'schema:laravel-ddv1';
 
     /**
      * The console command description.
