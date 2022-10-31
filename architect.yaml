@@ -1,0 +1,51 @@
+domainProblems:
+  - domainProblemName: Strange
+    services:
+      - name: Balance
+        methods:
+          - methodName: getCurrentUserBalance
+            inputParameters:
+              - name: userId
+                type: int
+              - name: userId2
+                type: int
+              - name: userId3
+                type: string
+              - name: userId4
+                type: string
+            outputParameters:
+              - name: balance
+                type: int
+    controllers:
+      - name: Balance
+        methods:
+          - methodName: getBalance
+            inputParameters:
+              - name: userId
+                type: int
+                rule: "['required']"
+              - name: email
+                rule: "['required', 'email']"
+                type: string
+      - name: OneMore
+        methods:
+          - methodName: getUsers
+            inputParameters:
+              - name: cluster
+                type: string
+                rule: "['required']"
+            outputParameters:
+              - name: usersList
+                type: string
+    models:
+      - modelName: Special
+        fields:
+          - fieldName: 'name'
+            migrationType: string
+            fakerBuiltIn: name
+          - fieldName: 'age'
+            migrationType: bigInteger
+            fakerBuiltIn: numerify
+          - fieldName: 'more'
+            migrationType: bigIncrements
+            fakerBuiltIn: domainWord

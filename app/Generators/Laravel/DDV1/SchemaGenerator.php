@@ -67,7 +67,7 @@ class SchemaGenerator
                 $required[] = $reflectionProperty->getName();
             }
 
-            if (in_array($type, self::PRIMITIVE_TYPES)) {
+            if (in_array($type, array_keys(self::PRIMITIVE_TYPES))) {
                 $propertiesInSchema[$reflectionProperty->getName()] = [
                     'description'=>$description,
                     'type'=>$type

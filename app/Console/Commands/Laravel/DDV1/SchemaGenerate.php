@@ -30,7 +30,7 @@ class SchemaGenerate extends Command
     {
         $generator = new SchemaGenerator();
         $schema = $generator->generate(\App\Generators\Laravel\DDV1\Config\DomainProblem::class);
-
+        shell_exec("mkdir -p ".dirname(config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.config('laravel-ddv1.schema_path')));
         file_put_contents(
             config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.config('laravel-ddv1.schema_path'),
             json_encode($schema, JSON_PRETTY_PRINT));

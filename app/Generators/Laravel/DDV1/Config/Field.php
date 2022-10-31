@@ -3,7 +3,6 @@
 namespace App\Generators\Laravel\DDV1\Config;
 
 use ReflectionClass;
-use Vladitot\SpecificationGenerator\SpecGenerator;
 
 class Field
 {
