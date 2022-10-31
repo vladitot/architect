@@ -42,7 +42,8 @@ class Service
         $interfaceTemplatePath = 'resources/views/laravel/ddv1/interface.blade.php';
 
         $interfaceNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\Interfaces';
-        $interfaceDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Interfaces/'.ucfirst($this->name).'Interface.php';
+        $interfaceDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Interfaces/'.ucfirst($this->name).'Interface.php';
 
         $interfaceName = ucfirst($this->name.'Interface');
 
@@ -75,7 +76,8 @@ class Service
     private function renderService(string $interfaceFullName)
     {
         $serviceName = 'Abstract'.ucfirst($this->name.'Service');
-        $serviceDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Services/'.$serviceName.'.php';
+        $serviceDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Services/'.$serviceName.'.php';
         $interfaceTemplatePath = 'resources/views/laravel/ddv1/service.blade.php';
         $serviceNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\Services';
 
@@ -94,7 +96,8 @@ class Service
     private function renderTest()
     {
         $testName = 'Abstract'.ucfirst($this->name.'ServiceTest');
-        $testDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/ServiceTests/'.$testName.'.php';
+        $testDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/ServiceTests/'.$testName.'.php';
         $testTemplatePath = 'resources/views/laravel/ddv1/abstractTest.blade.php';
         $testNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\ServiceTests';
 

@@ -96,7 +96,8 @@ class Method
             file_get_contents($dtoTemplate),
             ['fields'=>$convertedParams, 'namespace'=>$namespace, 'name'=>$name]
         );
-        $renderedDtoFilePath = 'src/Architect/Modules/'.ucfirst($this->parent->parent->domainProblemName).'/Data/'.$name.'.php';
+        $renderedDtoFilePath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->parent->domainProblemName).'/Data/'.$name.'.php';
         shell_exec('mkdir -p '.dirname($renderedDtoFilePath));
         file_put_contents($renderedDtoFilePath, $renderedDto);
         $dtoFullName = '\\'.$namespace.'\\'.$name;
@@ -120,7 +121,8 @@ class Method
             file_get_contents($requestTemplatePath),
             ['fields'=>$fields, 'dtoClassName'=>$dtoName, 'name'=>$name, 'namespace'=>$namespace]
         );
-        $renderedRequestFilePath = 'src/Architect/Modules/'.ucfirst($this->parent->parent->domainProblemName).'/Requests/'.$name.'.php';
+        $renderedRequestFilePath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->parent->domainProblemName).'/Requests/'.$name.'.php';
         shell_exec('mkdir -p '.dirname($renderedRequestFilePath));
         file_put_contents($renderedRequestFilePath, $renderedRequest);
         $requestClassName = '\\'.$namespace.'\\'.$name;
@@ -144,7 +146,8 @@ class Method
             file_get_contents($resourceTemplate),
             ['dtoClassName'=>$dtoClassName, 'resourceFields'=>$resourceFields, 'resourceName'=>$name, 'namespace'=>$namespace]
         );
-        $renderedResourceFilePath = 'src/Architect/Modules/'.ucfirst($this->parent->parent->domainProblemName).'/Resources/'.$name.'.php';
+        $renderedResourceFilePath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->parent->domainProblemName).'/Resources/'.$name.'.php';
         shell_exec('mkdir -p '.dirname($renderedResourceFilePath));
         file_put_contents($renderedResourceFilePath, $renderedResource);
         $resourceFullName = '\\'.$namespace.'\\'.$name;

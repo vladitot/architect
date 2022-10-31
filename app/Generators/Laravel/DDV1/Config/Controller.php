@@ -37,7 +37,8 @@ class Controller
         $interfaceTemplatePath = 'resources/views/laravel/ddv1/interface.blade.php';
 
         $interfaceNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\ControllerInterfaces';
-        $interfaceDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/ControllerInterfaces/Controller'.ucfirst($this->name).'Interface.php';
+        $interfaceDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/ControllerInterfaces/Controller'.ucfirst($this->name).'Interface.php';
 
         $interfaceName = 'Controller'.ucfirst($this->name.'Interface');
 
@@ -70,7 +71,8 @@ class Controller
     private function renderController(string $interfaceFullName)
     {
         $controllerName = 'Abstract'.ucfirst($this->name.'Controller');
-        $controllerDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Controllers/'.$controllerName.'.php';
+        $controllerDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Controllers/'.$controllerName.'.php';
         $controllerTemplatePath = 'resources/views/laravel/ddv1/controller.blade.php';
         $controllerNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\Controllers';
 
@@ -88,7 +90,8 @@ class Controller
     private function renderTest()
     {
         $testName = 'Abstract'.ucfirst($this->name.'ControllerTest');
-        $testDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/ControllerTests/'.$testName.'.php';
+        $testDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/ControllerTests/'.$testName.'.php';
         $testTemplatePath = 'resources/views/laravel/ddv1/abstractTest.blade.php';
         $testNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\ControllerTests';
 

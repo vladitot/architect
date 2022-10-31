@@ -46,7 +46,8 @@ class Model
     private function renderMigration()
     {
         $migrationName = ucfirst($this->modelName.'Migration');
-        $migrationDestinationPath = 'database/generatedMigrations/'.ucfirst($this->parent->domainProblemName).'-'.$migrationName.'.php';
+        $migrationDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'database/generatedMigrations/'.ucfirst($this->parent->domainProblemName).'-'.$migrationName.'.php';
         $migrationTemplatePath = 'resources/views/laravel/ddv1/migration.blade.php';
 
         $renderedFileContent =  Blade::render(
@@ -60,7 +61,8 @@ class Model
     private function renderModel()
     {
         $modelName = 'Abstract'.ucfirst($this->modelName.'Model');
-        $modelDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Models/'.$modelName.'.php';
+        $modelDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Models/'.$modelName.'.php';
         $modelTemplatePath = 'resources/views/laravel/ddv1/abstractModel.blade.php';
         $modelNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\Models';
 
@@ -79,7 +81,8 @@ class Model
     private function renderFactory(string $modelName)
     {
         $factoryName = 'Abstract'.ucfirst($this->modelName.'Factory');
-        $factoryDestinationPath = 'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Factories/'.$factoryName.'.php';
+        $factoryDestinationPath = config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.
+            'src/Architect/Modules/'.ucfirst($this->parent->domainProblemName).'/Factories/'.$factoryName.'.php';
         $factoryTemplatePath = 'resources/views/laravel/ddv1/abstractFactory.blade.php';
         $factoryNamespace = 'Architect\\Modules\\'.ucfirst($this->parent->domainProblemName).'\\Factories';
 

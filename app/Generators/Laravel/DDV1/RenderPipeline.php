@@ -8,8 +8,8 @@ class RenderPipeline
 {
     public function run(Base $config)
     {
-        shell_exec('rm -rf src/Architect');
-        shell_exec('rm -rf src/database/generatedMigrations');
+        shell_exec('rm -rf '.config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.config('laravel-ddv1.architect_path'));
+        shell_exec('rm -rf '.config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.'generatedMigrations');
         $abstractions = [];
         foreach ($config->domainProblems as $domainProblem) {
             foreach ($domainProblem->services as $service) {
@@ -37,6 +37,6 @@ class RenderPipeline
         }
 
         $content.="\n".'];';
-        file_put_contents('config/abstractions.php', $content);
+        file_put_contents(config('laravel-ddv1.project_path_prefix').DIRECTORY_SEPARATOR.'config/abstractions.php', $content);
     }
 }
