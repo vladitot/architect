@@ -22,6 +22,6 @@ abstract class {{$testName}} extends TestCase
     /**
      * @dataprovider dataProviderFor{{$method->methodName}}
      */
-    abstract public function test{{$method->methodName}}();
+    abstract public function test{{ucfirst($method->methodName)}}();
 @endforeach
 }
