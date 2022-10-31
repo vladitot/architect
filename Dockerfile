@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04 as base
 
 LABEL maintainer="Taylor Otwell"
 
@@ -45,6 +45,9 @@ RUN useradd -ms /bin/bash --no-user-group -g 1000 -u 1000 professional
 
 COPY vendor/laravel/sail/runtimes/8.1/php.ini /etc/php/8.1/cli/conf.d/99-sail.ini
 
+ENTRYPOINT ["bash"]
+
+FROM base as local
 COPY --chown=1000:1000 app /var/www/html/app
 COPY --chown=1000:1000 bootstrap /var/www/html/bootstrap
 COPY --chown=1000:1000 config /var/www/html/config
@@ -57,4 +60,19 @@ COPY --chown=1000:1000 vendor /var/www/html/vendor
 COPY --chown=1000:1000 artisan /var/www/html/artisan
 COPY --chown=1000:1000 composer.json /var/www/html/composer.json
 
-ENTRYPOINT ["bash"]
+FROM base as production
+
+COPY --chown=1000:1000 app /var/www/html/app
+COPY --chown=1000:1000 bootstrap /var/www/html/bootstrap
+COPY --chown=1000:1000 config /var/www/html/config
+COPY --chown=1000:1000 public /var/www/html/public
+COPY --chown=1000:1000 resources /var/www/html/resources
+COPY --chown=1000:1000 routes /var/www/html/routes
+COPY --chown=1000:1000 storage /var/www/html/storage
+COPY --chown=1000:1000 tests /var/www/html/tests
+COPY --chown=1000:1000 artisan /var/www/html/artisan
+COPY --chown=1000:1000 composer.json /var/www/html/composer.json
+COPY --chown=1000:1000 composer.lock /var/www/html/composer.lock
+
+RUN composer install
+RUN rm -rf /var/www/html/composer.lock

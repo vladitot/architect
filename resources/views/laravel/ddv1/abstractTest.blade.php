@@ -11,7 +11,7 @@ abstract class {{$testName}} extends TestCase
 
 @foreach($methods as $method)
 
-    public function dataProviderFor{{$method->methodName}}() {
+    public function dataProviderFor{{ucfirst($method->methodName)}}() {
         return [
         @foreach($cases as $case)
             '{{$case}}'=>[],
@@ -20,7 +20,7 @@ abstract class {{$testName}} extends TestCase
     }
 
     /**
-     * @dataprovider dataProviderFor{{$method->methodName}}
+     * @dataprovider dataProviderFor{{ucfirst($method->methodName)}}
      */
     abstract public function test{{ucfirst($method->methodName)}}();
 @endforeach

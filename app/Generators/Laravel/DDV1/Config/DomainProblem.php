@@ -33,4 +33,12 @@ class DomainProblem
      * @var string[]
      */
     public array $abstractions;
+
+    public function __construct()
+    {
+        $this->abstractions = [];
+        $this->services = [];
+        $this->models = [];
+        $this->controllers = [];
+    }
 }

@@ -10,4 +10,9 @@ class Base
      * @var DomainProblem[] $domainProblems
      */
     public array $domainProblems;
+
+    public function __construct()
+    {
+        $this->domainProblems = [];
+    }
 }
